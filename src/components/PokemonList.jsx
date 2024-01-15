@@ -1,11 +1,12 @@
 import React from "react";
 import { PokemonCard } from "./PokemonCard";
+import "./PokemonList.css";
 
 export const PokemonList = ({ pokemons }) => {
   return (
-    <div>
-      {pokemons.map(() => (
-        <PokemonCard />
+    <div className="PokemonList">
+      {pokemons.map((p, i) => (
+        <PokemonCard key={i} />
       ))}
     </div>
   );
