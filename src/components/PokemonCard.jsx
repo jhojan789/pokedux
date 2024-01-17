@@ -3,17 +3,12 @@ import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 import React from "react";
 
-export const PokemonCard = ({ name }) => {
+export const PokemonCard = (pokemon) => {
   return (
     <Card
       // style={{ width: 250 }}
-      title={name}
-      cover={
-        <img
-          src="https://w7.pngwing.com/pngs/993/391/png-transparent-pokemon-character-illustration-pokemon-x-and-y-pokemon-go-pokemon-black-white-mewtwo-pokemon-go-purple-mammal-cat-like-mammal-thumbnail.png"
-          alt="MewTwo"
-        />
-      }
+      title={pokemon.name}
+      cover={<img src={pokemon.image} alt={pokemon.name} />}
       extra={<StarOutlined />}
     >
       <Meta description="magic, power" />

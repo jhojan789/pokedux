@@ -9,11 +9,11 @@ import {
   legacy_createStore as createStore,
 } from "redux";
 import { pokemonReducer } from "./reducer/pokemonReducer";
-import { featuring, logger } from "./middleware";
+import { logger } from "./middleware";
 
 const composedEnhancers = compose(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(featuring, logger)
+  applyMiddleware(logger)
 );
 
 const store = createStore(pokemonReducer, composedEnhancers);
