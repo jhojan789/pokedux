@@ -3,15 +3,17 @@ import { Card } from "antd";
 import Meta from "antd/es/card/Meta";
 import React from "react";
 
-export const PokemonCard = (pokemon) => {
+export const PokemonCard = ({ name, image, types }) => {
+  const typeStrings = types.map((t) => t.type.name).join(", ");
+
   return (
     <Card
       // style={{ width: 250 }}
-      title={pokemon.name}
-      cover={<img src={pokemon.image} alt={pokemon.name} />}
+      title={name}
+      cover={<img src={image} alt={name} />}
       extra={<StarOutlined />}
     >
-      <Meta description="magic, power" />
+      <Meta description={typeStrings} />
     </Card>
   );
 };
