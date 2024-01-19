@@ -1,6 +1,13 @@
+import { fromJS } from "immutable";
+
 //mutable
 // function updateHeight(userInf) {
 //   userInf.height = userInf.height + 1;
+//   return userInf;
+// }
+//
+// function updateHeight(userInf) {
+//   userInf.set("height", userInf.get("height") + 1);
 //   return userInf;
 // }
 //
@@ -13,23 +20,25 @@
 // function updateHeight(userInf) {
 //   return { ...userInf, height: userInf.height + 1 };
 // }
-function updateHeight(userInf) {
-  return userInf.set("height", userInf.get("height") + 1);
-}
 
-// const userInfo = {
-//   name: "Jhojan",
-//   height: 187,
-// };
-const userInfo = new Map();
+// immutable with immutable library
 
-userInfo.set("name", "Jhojan");
-userInfo.set("height", 187);
+const userInfo = fromJS({
+  name: "Jhojan",
+  height: 187,
+});
 
-console.log("userInfo BEFORE: ", userInfo);
+// const userInfo = new Map();
 
-const updatedUserInfo = updateHeight(userInfo);
+// userInfo.set("name", "Jhojan");
+// userInfo.set("height", 187);
 
-console.log("userInfo AFTER: ", userInfo);
+console.log("userInfo BEFORE: ", userInfo._root.entries);
 
-console.log("updatedUserInfo", updatedUserInfo);
+// const updatedUserInfo = updateHeight(userInfo);
+
+const updatedUserInfo = userInfo.set("height", 188);
+
+console.log("userInfo AFTER: ", userInfo._root.entries);
+
+console.log("updatedUserInfo", updatedUserInfo._root.entries);
