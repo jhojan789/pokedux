@@ -6,11 +6,11 @@ import { useEffect } from "react";
 import { getPokemonWithDetails, setLoading } from "./actions";
 import { Col, Spin } from "antd";
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 
 function App() {
   const pokemons = useSelector((state) =>
-    state.getIn(["data", "pokemons"]).toJS()
+    state.getIn(["data", "pokemons"], shallowEqual).toJS()
   );
   const loading = useSelector((state) => state.getIn(["ui", "loading"]));
   const dispatch = useDispatch();
