@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchPokemons, getPokemonDetails } from "../api/fetchPokemons";
-import { setLoading } from "../actions";
+import { setLoading } from "../slices/uiSlice";
 
 const initialState = {
   pokemons: [],
@@ -10,9 +10,6 @@ export const fetchPokemonsWithDetails = createAsyncThunk(
   "data/fetchPokemonsWithDetails",
   // thunkAPI
   async (_, { dispatch }) => {
-    //dispatch loader
-    //fetch
-    //dispatch loader
     dispatch(setLoading(true));
     const pokemonRes = await fetchPokemons();
     const pokemonDetails = await Promise.all(
@@ -36,8 +33,8 @@ export const dataSlice = createSlice({
       });
 
       if (pokemonIndex >= 0) {
-        const isFavorite = state.pokemons[pokemonIndex].isFavorite;
-        state.pokemons[pokemonIndex].isFavorite = !isFavorite;
+        const isFavorite = state.pokemons[pokemonIndex].favorite;
+        state.pokemons[pokemonIndex].favorite = !isFavorite;
       }
     },
   },
