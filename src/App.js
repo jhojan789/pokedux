@@ -10,6 +10,8 @@ import { fetchPokemonsWithDetails } from "./slices/dataSlice";
 function App() {
   const pokemons = useSelector((state) => state.data.pokemons, shallowEqual);
   const loading = useSelector((state) => state.ui.loading);
+  const searchPokemons = useSelector((state) => state.data.searchPokemons);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchPokemonsWithDetails());
@@ -28,8 +30,10 @@ function App() {
         <Col offset={12}>
           <Spin spinning size="large" />
         </Col>
-      ) : (
+      ) : searchPokemons.length === 0 ? (
         <PokemonList pokemons={pokemons} />
+      ) : (
+        <PokemonList pokemons={searchPokemons} />
       )}
     </div>
   );
