@@ -46,7 +46,7 @@ export const dataSlice = createSlice({
           const isFavorite = state.searchPokemons[pokemonIndex].favorite;
           state.searchPokemons[pokemonIndex].favorite = !isFavorite;
         }
-        console.log(state.searchPokemons.length);
+        // console.log(state.searchPokemons.length);
       }
     },
     searchPokemons: (state, action) => {
